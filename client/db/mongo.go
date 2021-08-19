@@ -6,6 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"os"
 	"time"
 
 	"github.com/pkg/errors"
@@ -41,7 +42,11 @@ func Save(element interface{},collection string) (string,error){
 func getClient() *mongo.Client {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	dbPass := os.Getenv("mongopwd")
+	clientOptions := options.Client().
+		ApplyURI("mongodb+srv://botuser:"+dbPass+"@cluster0.ecneu.mongodb.net/notifyBot?retryWrites=true&w=majority")
+
+	client, err := mongo.Connect(ctx,clientOptions)
 
 	if err != nil {
 		panic(err)
