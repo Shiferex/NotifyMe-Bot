@@ -134,7 +134,10 @@ func main() {
 	if port == "" {
 		panic(fmt.Errorf("$PORT not set"))
 	}
-	err := http.ListenAndServe(port, http.HandlerFunc(telegram.HandleUpdate))
+	fmt.Println("PORT ")
+	fmt.Println(port)
+
+	err := http.ListenAndServe(":"+port, http.HandlerFunc(telegram.HandleUpdate))
 	if err != nil {
 		return
 	}
