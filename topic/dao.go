@@ -1,7 +1,7 @@
 package topic
 
 import (
-	"notify-me-bot/client/db"
+	"NotifyMe-Bot/client/db"
 	"context"
 	"github.com/pkg/errors"
 	"go.mongodb.org/mongo-driver/bson"

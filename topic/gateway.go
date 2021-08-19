@@ -1,7 +1,7 @@
 package topic
 
 import (
-	"notify-me-bot/types"
+	"NotifyMe-Bot/types"
 	"github.com/pkg/errors"
 )
 

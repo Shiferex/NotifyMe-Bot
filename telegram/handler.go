@@ -1,8 +1,8 @@
 package telegram
 
 import (
-	"notify-me-bot/topic"
-	"notify-me-bot/types"
+	"NotifyMe-Bot/topic"
+	"NotifyMe-Bot/types"
 	"bytes"
 	"encoding/json"
 	"fmt"

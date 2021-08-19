@@ -1,14 +1,15 @@
 package main
 
 import (
-	"notify-me-bot/client/db"
-	"notify-me-bot/telegram"
-	"notify-me-bot/types"
+	"NotifyMe-Bot/client/db"
+	"NotifyMe-Bot/telegram"
+	"NotifyMe-Bot/types"
 	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -128,7 +129,12 @@ func say(chat *types.Chat,user *types.User,msg string) error {
 
 // FInally, the main funtion starts our server on port 3000
 func main() {
-	err := http.ListenAndServe(":3000", http.HandlerFunc(telegram.HandleUpdate))
+	fmt.Println("We up bois")
+	port := os.Getenv("PORT")
+	if port == "" {
+		panic(fmt.Errorf("$PORT not set"))
+	}
+	err := http.ListenAndServe(port, http.HandlerFunc(telegram.HandleUpdate))
 	if err != nil {
 		return
 	}

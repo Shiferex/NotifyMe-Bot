@@ -1,4 +1,4 @@
-module awesomeProject
+module NotifyMe-Bot
 
 go 1.16
 
